@@ -34,7 +34,7 @@ Você tem até o dia 19/04/2024 para completar o teste. Complete as tarefas list
 ### Entrega
 - Envie o projeto até o dia 19/04/2024.
 - A entrega deve ser feita através de um repositório público no GitHub.
-- Certifique-se de incluir um READMW.md com instruções claras sobre como configurar e executar o projeto.
+- Certifique-se de incluir um README.md com instruções claras sobre como configurar e executar o projeto.
 
 ### Nota
 
