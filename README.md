@@ -2,7 +2,7 @@
 
 ## Instruções
 
-Você tem até o dia 18/04/2024 para completar o teste. Complete as tarefas listadas abaixo.
+Você tem até o dia 27/06/2024 para completar o teste. Complete as tarefas listadas abaixo.
 
 ### Tecnologias
 
@@ -32,7 +32,7 @@ Você tem até o dia 18/04/2024 para completar o teste. Complete as tarefas list
    - Retorne respostas JSON adequadas para cada operação CRUD indicando sucesso ou falha.
 
 ### Entrega
-- Envie o projeto até o dia 18/04/2024.
+- Envie o projeto até o dia 27/06/2024.
 - A entrega deve ser feita através de um repositório público no GitHub.
 - Certifique-se de incluir um README.md com instruções claras sobre como configurar e executar o projeto.
 
