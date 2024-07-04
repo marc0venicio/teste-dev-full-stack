@@ -1,6 +1,6 @@
 
 import { createVuetify, type ThemeDefinition } from 'vuetify'
-import { es, pt } from 'vuetify/locale'
+import { pt } from 'vuetify/locale'
 import { aliases, mdi } from 'vuetify/iconsets/mdi'
 import * as components from 'vuetify/components'
 import * as directives from 'vuetify/directives'

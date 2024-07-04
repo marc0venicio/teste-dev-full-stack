@@ -17,6 +17,28 @@ class UserModel extends Authenticatable
 
     protected $table = 'users';
 
+    protected $orderable = [
+        'id',
+        'name',
+        'email',
+        'email_verified_at',
+    ];
+
+    protected $dates = [
+        'email_verified_at',
+        'created_at',
+        'updated_at',
+        'deleted_at',
+    ];
+
+    protected $filterable = [
+        'id',
+        'name',
+        'email',
+        'cpf',
+        'email_verified_at',
+        'roles.title',
+    ];
     protected $fillable = [
         'id',
         'name',

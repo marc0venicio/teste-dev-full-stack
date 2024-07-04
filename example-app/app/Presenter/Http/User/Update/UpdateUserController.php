@@ -2,32 +2,28 @@
 
 declare(strict_types=1);
 
-namespace App\Presenter\Http\User\Index;
+namespace App\Presenter\Http\User\Update;
 
-use App\Application\User\Index\IndexUserQuery;
-use App\Application\User\Index\IndexUserQueryHandler;
-use App\Application\User\Load\LoadUserQuery;
-use App\Application\User\Load\LoadUserQueryHandler;
+use App\Application\User\Update\UpdateUserQuery;
+use App\Application\User\Update\UpdateUserQueryHandler;
 use App\Domain\User\UserNotFound;
+use App\Infrastructure\Database\Models\UserModel;
+use App\Presenter\Http\User\Create\UpdateUserRequest;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class IndexUserController
+class UpdateUserController
 {
     public function __construct(
-        private readonly IndexUserQueryHandler $loadHandler
+        private readonly UpdateUserQueryHandler $loadHandler
     ) {
     }
 
-    public function __invoke(Request $request): JsonResponse | Response
+    public function __invoke(UpdateUserRequest $request, UserModel $userId): JsonResponse | Response
     {
         try{
-
-            $query = new IndexUserQuery($request->all());
+            $query = new UpdateUserQuery($userId);
             $user = $this->loadHandler->handle($query);
-
-
         }catch(UserNotFound $e){
             return new JsonResponse([
                 'error' => $e->getMessage(),

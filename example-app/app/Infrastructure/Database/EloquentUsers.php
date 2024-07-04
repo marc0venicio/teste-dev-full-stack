@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Database;
 
+use App\Application\User\Responses\UserListResponse;
 use App\Domain\User\User;
 use App\Domain\User\UserNotFound;
 use App\Domain\User\Users;
@@ -17,7 +18,7 @@ class EloquentUsers implements Users
     ) {
     }
 
-    public function list(): User
+    public function list(): UserListResponse
     {
         try {
             $user = $this->model->get();
@@ -25,7 +26,8 @@ class EloquentUsers implements Users
             // throw new UserNotFound();
         }
 
-        return User::fromArray($user->toArray());
+        // dd($user->toArray());
+        return UserListResponse::from($user->toArray());
     }
 
     /**
@@ -46,5 +48,22 @@ class EloquentUsers implements Users
     {
         $user = $this->model->create($user->toArray());
         return User::fromArray($user->toArray());
+    }
+
+    public function update(UserModel $user): UserModel
+    {
+        $data = $this->model->where('id', $user->id)->update([
+            'name'=> $user->name,
+            'password'=>$user->password,
+            'cpf'=> $user->cpf,
+            'email'=>$user->email
+        ]);
+        return $data;
+    }
+
+    public function delete(int $user): User
+    {
+        dd("chegou");
+        return User();
     }
 }

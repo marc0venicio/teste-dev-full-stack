@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Application\User\Responses;
 
 use App\Application\Common\Contracts\ResponseContract;
+use App\Application\Common\Responses\Concerns\ArrayAccessible;
 use App\Domain\User\User;
-use App\Services\Common\Responses\Concerns\ArrayAccessible;
 
 /**
  * @implements ResponseContract<array{id: string, object: string, created_at: int, name: ?string, description: ?string, model: string, instructions: ?string, tools: array<int, array{type: string}|array{type: string}|array{type: string, function: array{description: string, name: string, parameters: array<string, mixed>}}>, file_ids: array<int, string>, metadata: array<string, string>}>

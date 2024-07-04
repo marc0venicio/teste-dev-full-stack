@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace  App\Services\Common\Responses\Concerns;
+namespace  App\Application\Common\Responses\Concerns;
 
 use BadMethodCallException;
 

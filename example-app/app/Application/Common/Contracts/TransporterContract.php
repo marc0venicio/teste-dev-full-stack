@@ -11,9 +11,7 @@ use App\Services\Common\ValueObjects\Transporter\Payload;
 use App\Services\Common\ValueObjects\Transporter\Response;
 use Psr\Http\Message\ResponseInterface;
 
-/**
- * @internal
- */
+
 interface TransporterContract
 {
     /**
