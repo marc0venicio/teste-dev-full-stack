@@ -25,5 +25,5 @@ import { useLayoutStore } from '@/stores'
 // Initialization Store
 const storeLayout = useLayoutStore()
 // Const
-const nameProfile = ref<string>('Name user')
+// const nameProfile = ref<string>('Name user')
 </script>
