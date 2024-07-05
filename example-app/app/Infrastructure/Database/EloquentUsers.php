@@ -70,7 +70,7 @@ class EloquentUsers implements Users
         $user = $this->model->find($user);
 
         if (!$user) {
-            return response()->json(['error' => 'User not found'], 404);
+            throw new \Exception('User not found');
         }
 
         return $user->delete();

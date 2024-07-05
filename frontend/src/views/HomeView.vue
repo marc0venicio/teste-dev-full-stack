@@ -11,7 +11,7 @@
           <v-text-field v-model="search" label="Buscar" @input="applyFilter" />
         </v-col>
         <v-col>
-          <v-btn color="primary" @click="openModal(null)">Novo Usuário</v-btn>
+          <v-btn style="height: 55px;" color="primary" @click="openModal(null)">Novo Usuário</v-btn>
         </v-col>
       </v-row>
       <v-row>
@@ -27,7 +27,7 @@
             class="custom-table"
           >
             <template v-slot:item.action="{ item }">
-              <v-btn icon @click="openModal(item)" style="height: 55px;">
+              <v-btn icon @click="openModal(item)">
                 <v-icon>mdi-pencil</v-icon>
               </v-btn>
               <v-btn icon @click="deleteUser(item.id)">
