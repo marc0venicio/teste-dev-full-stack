@@ -2,7 +2,7 @@
   <v-layout>
     <AppNav />
     <AppAsideMenu />
-    <v-main>
+    <v-main class="main">
       <v-container fluid>
         <slot></slot>
       </v-container>
@@ -25,3 +25,8 @@ export default defineComponent({
   }
 })
 </script>
+<style scoped>
+.main {
+  background-color: #35353500;
+}
+</style>

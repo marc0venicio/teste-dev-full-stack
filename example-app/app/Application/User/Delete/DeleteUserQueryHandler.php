@@ -19,7 +19,7 @@ class DeleteUserQueryHandler implements QueryHandler
     /**
      * @param DeleteUserQuery $command
      */
-    public function handle(Query $command): User
+    public function handle(Query $command, ?array $params = null): bool|null
     {
         return $this->users->delete($command->id);
     }

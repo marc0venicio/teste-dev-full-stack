@@ -6,5 +6,5 @@ namespace App\Application;
 
 interface CommandHandler
 {
-    public function handle(Command $command);
+    public function handle(Command $command, ?array $params = null);
 }

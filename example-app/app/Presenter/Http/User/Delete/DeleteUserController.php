@@ -29,7 +29,6 @@ class DeleteUserController
                 $e->getDetails()
             ], Response::HTTP_NOT_FOUND);
         }
-        return new JsonResponse(
-            $user, Response::HTTP_OK);
+        return new JsonResponse($user, Response::HTTP_NO_CONTENT);
     }
 }

@@ -18,10 +18,10 @@ class UpdateUserQueryHandler implements QueryHandler
 
     /**
      * @param UpdateUserQuery $command
+     * @param array $params
      */
-    public function handle(Query $command): User
+    public function handle(Query $command, ?array $params=null): User
     {
-        // dd($command->user);
-        return $this->users->update($command->user);
+        return $this->users->update($command->user, $params);
     }
 }

@@ -6,8 +6,6 @@ namespace App\Presenter\Http\User\Index;
 
 use App\Application\User\Index\IndexUserQuery;
 use App\Application\User\Index\IndexUserQueryHandler;
-use App\Application\User\Load\LoadUserQuery;
-use App\Application\User\Load\LoadUserQueryHandler;
 use App\Domain\User\UserNotFound;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;

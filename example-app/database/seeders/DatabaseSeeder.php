@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use App\Infrastructure\Database\Models\UserModel;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use Illuminate\Database\Eloquent\Factories\Sequence;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -13,12 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        UserModel::factory(10)->create();
-
-        // UserModel::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        //     'Password' => 'password'
-        // ]);
+        UserModel::factory()
+        ->count(10)
+        ->state(new Sequence(
+            ['name' => 'João'],
+            ['name' => 'Maria'],
+        ))
+        ->create();
     }
 }

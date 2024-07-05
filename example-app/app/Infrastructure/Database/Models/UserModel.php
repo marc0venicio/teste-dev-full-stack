@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Database\Models;
 
+use App\Application\Common\Support\HasAdvancedFilter;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -14,6 +15,7 @@ class UserModel extends Authenticatable
     use HasApiTokens;
     use HasFactory;
     use Notifiable;
+    use HasAdvancedFilter;
 
     protected $table = 'users';
 

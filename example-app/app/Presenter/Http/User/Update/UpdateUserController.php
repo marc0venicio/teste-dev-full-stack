@@ -8,14 +8,13 @@ use App\Application\User\Update\UpdateUserQuery;
 use App\Application\User\Update\UpdateUserQueryHandler;
 use App\Domain\User\UserNotFound;
 use App\Infrastructure\Database\Models\UserModel;
-use App\Presenter\Http\User\Create\UpdateUserRequest;
 use Illuminate\Http\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
 
 class UpdateUserController
 {
     public function __construct(
-        private readonly UpdateUserQueryHandler $loadHandler
+        private readonly UpdateUserQueryHandler $updateHandler
     ) {
     }
 
@@ -23,7 +22,7 @@ class UpdateUserController
     {
         try{
             $query = new UpdateUserQuery($userId);
-            $user = $this->loadHandler->handle($query);
+            $user = $this->updateHandler->handle($query, $request->validated());
         }catch(UserNotFound $e){
             return new JsonResponse([
                 'error' => $e->getMessage(),

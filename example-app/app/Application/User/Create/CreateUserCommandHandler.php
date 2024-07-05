@@ -16,7 +16,12 @@ class CreateUserCommandHandler implements CommandHandler
     ) {
     }
 
-    public function handle(Command $command): User
+    /**
+     *
+     * @param Command $command
+     * @return User
+     */
+    public function handle(Command $command, ?array $params = null): User
     {
         $user = User::create(null, ...$command->getProperties());
         return $this->users->create($user);

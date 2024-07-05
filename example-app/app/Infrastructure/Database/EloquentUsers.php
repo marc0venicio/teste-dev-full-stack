@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Infrastructure\Database;
 
+use App\Application\Common\Support\HasAdvancedFilter;
 use App\Application\User\Responses\UserListResponse;
 use App\Domain\User\User;
 use App\Domain\User\UserNotFound;
 use App\Domain\User\Users;
 use App\Infrastructure\Database\Models\UserModel;
+use Illuminate\Contracts\Pagination\LengthAwarePaginator;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class EloquentUsers implements Users
@@ -18,16 +20,14 @@ class EloquentUsers implements Users
     ) {
     }
 
-    public function list(): UserListResponse
+    public function list(): LengthAwarePaginator
     {
         try {
-            $user = $this->model->get();
+            $user = $this->model->advancedFilter();
         } catch (ModelNotFoundException) {
             // throw new UserNotFound();
         }
-
-        // dd($user->toArray());
-        return UserListResponse::from($user->toArray());
+        return $user;
     }
 
     /**
@@ -50,20 +50,29 @@ class EloquentUsers implements Users
         return User::fromArray($user->toArray());
     }
 
-    public function update(UserModel $user): UserModel
+    public function update(UserModel $user, array $params): User
     {
-        $data = $this->model->where('id', $user->id)->update([
-            'name'=> $user->name,
-            'password'=>$user->password,
-            'cpf'=> $user->cpf,
-            'email'=>$user->email
-        ]);
-        return $data;
+        $userData = $this->model->findOrFail($user->id);
+
+        if (!$userData) {
+            throw new \Exception('User not found');
+        }
+
+        $params['password'] = bcrypt($params['password']);
+        $userData->update($params);
+
+
+        return User::fromArray($userData->toArray());
     }
 
-    public function delete(int $user): User
+    public function delete(int $user): bool|null
     {
-        dd("chegou");
-        return User();
+        $user = $this->model->find($user);
+
+        if (!$user) {
+            return response()->json(['error' => 'User not found'], 404);
+        }
+
+        return $user->delete();
     }
 }

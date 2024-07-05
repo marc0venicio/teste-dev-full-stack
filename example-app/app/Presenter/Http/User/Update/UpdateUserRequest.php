@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Presenter\Http\User\Create;
+namespace App\Presenter\Http\User\Update;
 
 use App\Application\User\Create\CreateUserCommand;
 use Illuminate\Foundation\Http\FormRequest;
@@ -24,11 +24,12 @@ class UpdateUserRequest extends FormRequest
      */
     public function rules(): array
     {
+        // dd(request()->id);
         return [
-            'name' => 'required',
-            'email' => 'required',
-            'cpf' => 'required',
-            'password' => 'required',
+            'name' => 'required|string|max:255',
+            'email' => 'required|email|unique:users,email,'.request()->id,
+            'cpf' => 'required|string|max:11|unique:users,cpf,'.request()->id,
+            'password' => 'nullable|string|min:8',
         ];
     }
 

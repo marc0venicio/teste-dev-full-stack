@@ -6,9 +6,8 @@ namespace App\Application\User\Index;
 
 use App\Application\Query;
 use App\Application\QueryHandler;
-use App\Application\User\Responses\UserListResponse;
-use App\Domain\User\User;
 use App\Domain\User\Users;
+use Illuminate\Pagination\LengthAwarePaginator;
 
 class IndexUserQueryHandler implements QueryHandler
 {
@@ -20,7 +19,7 @@ class IndexUserQueryHandler implements QueryHandler
     /**
      * @param IndexUserQuery $command
      */
-    public function handle(Query $command): UserListResponse
+    public function handle(Query $command, ?array $params =null): LengthAwarePaginator
     {
         return $this->users->list();
     }
